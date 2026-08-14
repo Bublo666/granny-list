@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardest Grenny Mods List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #120d18;
+    --bg-panel: #1b1424;
+    --line: #2c2237;
+    --ink: #ece6f0;
+    --ink-dim: #a99cb8;
+    --ember: #e8792f;
+    --ember-dim: #7a4420;
+    --violet: #8a6cff;
+    --danger: #d9455f;
+  }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, #2a1a3a 0%, transparent 60%),
+      var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    padding-bottom: 80px;
+  }
+
+  header{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 24px 32px;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow{
+    font-size: 12px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 12px;
+  }
+  h1{
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 800;
+    font-size: clamp(40px, 8vw, 72px);
+    letter-spacing: .02em;
+    margin: 0 0 8px;
+    line-height: .95;
+  }
+  h1 span{ color: var(--ember); }
+  .sub{
+    color: var(--ink-dim);
+    font-size: 15px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .toolbar{
+    max-width: 900px;
+    margin: 20px auto 0;
+    padding: 0 24px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+  }
+  .toolbar button, .toolbar label{
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    color: var(--ink-dim);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .toolbar button:hover, .toolbar label:hover{
+    color: var(--ink);
+    border-color: var(--ember-dim);
+  }
+  .toolbar input[type=file]{ display:none; }
+  #btnLogin{ border-color: var(--violet); color: var(--violet); }
+  #status{ font-size: 12px; color: var(--ink-dim); }
+  .locked .card{ cursor: default; }
+  .locked .title, .locked .desc{ cursor: text; }
+  .locked .thumb{ cursor: default; }
+  .edit-only{ display:none; }
+  body:not(.locked) .edit-only{ display:inline-flex; }
+
+  .hint{
+    max-width: 900px;
+    margin: 14px auto 0;
+    padding: 0 24px;
+    text-align:center;
+    font-size: 12px;
+    color: var(--ink-dim);
+    opacity:.7;
+  }
+
+  #list{
+    max-width: 900px;
+    margin: 40px auto 0;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card{
+    position: relative;
+    display:flex;
+    align-items:center;
+    gap: 18px;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 18px;
+    overflow: hidden;
+    cursor: grab;
+    transition: border-color .15s, transform .15s;
+  }
+  .card:hover{ border-color: var(--ember-dim); }
+  .card.sortable-ghost{ opacity:.3; }
+  .card.sortable-chosen{ border-color: var(--ember); cursor: grabbing; }
+
+  .rank-watermark{
+    position:absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800;
+    font-size: 90px;
+    color: var(--line);
+    opacity:.6;
+    pointer-events:none;
+    line-height:1;
+    z-index:0;
+  }
+  .rank{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800;
+    font-size: 28px;
+    color: var(--ember);
+    width: 54px;
+    text-align:center;
+    flex-shrink:0;
+    z-index:1;
+  }
+  .thumb{
+    width: 84px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    flex-shrink:0;
+    z-index:1;
+    cursor: pointer;
+  }
+  .info{ z-index:1; min-width:0; flex:1; }
+  .title{
+    font-weight: 600;
+    font-size: 16px;
+    margin:0 0 3px;
+    cursor: text;
+  }
+  .desc{
+    font-size: 13px;
+    color: var(--ink-dim);
+    margin:0;
+    cursor: text;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .title:hover, .desc:hover{ color: var(--violet); }
+
+  footer{
+    text-align:center;
+    color: var(--ink-dim);
+    font-size: 12px;
+    margin-top: 50px;
+    opacity:.6;
+  }
+</style>
+</head>
+<body class="locked">
+
+<header>
+  <div class="eyebrow">Рейтинг · 150 позиций</div>
+  <h1>HARDEST <span>GRENNY</span> MODS LIST</h1>
+  <p class="sub">Список открыт для просмотра всем. Менять порядок и содержимое может только вошедший администратор.</p>
+</header>
+
+<div class="toolbar">
+  <button id="btnLogin">🔒 Войти</button>
+  <span id="status"></span>
+  <button id="btnExport" class="edit-only">⬇ Экспорт JSON</button>
+  <button id="btnReset" class="edit-only">↺ Сбросить порядок</button>
+</div>
+<p class="hint">Порядок и содержимое хранятся в общей базе (Firestore) — их видят все посетители одинаково.</p>
+
+<div id="list">Загрузка…</div>
+
+<footer>сделано на чистом HTML/CSS/JS · SortableJS · Firebase</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+/* ====== ВСТАВЬ СЮДА СВОЙ КОНФИГ ИЗ FIREBASE CONSOLE ====== */
+const firebaseConfig = {
+  apiKey: "AIzaSyDynH2HQAF66FBVDhuVpFuNoX5jvmGpsnQ",
+  authDomain: "granny-list.firebaseapp.com",
+  projectId: "granny-list",
+  storageBucket: "granny-list.firebasestorage.app",
+  messagingSenderId: "291778496353",
+  appId: "1:291778496353:web:808b2eeeaea89f235be720"
+};
+/* ========================================================= */
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+const docRef = db.collection('list').doc('data');
+
+let items = [];
+let isEditing = false;
+let isDragging = false;
+let sortableInstance = null;
+const listEl = document.getElementById('list');
+
+function defaultData(){
+  const arr = [];
+  for(let i=1;i<=150;i++){
+    arr.push({
+      title: 'Мод ' + i,
+      desc: 'Описание — кликни дважды, чтобы изменить',
+      img: 'https://picsum.photos/seed/mod' + i + '/160/110'
+    });
+  }
+  return arr;
+}
+
+function applyEditingState(){
+  document.body.classList.toggle('locked', !isEditing);
+  document.getElementById('btnLogin').textContent = isEditing ? '🔓 Выйти' : '🔒 Войти';
+  document.getElementById('status').textContent = isEditing ? ('вошёл как ' + (auth.currentUser ? auth.currentUser.email : '')) : '';
+  if(sortableInstance) sortableInstance.option('disabled', !isEditing);
+}
+
+function render(){
+  listEl.innerHTML = '';
+  items.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.idx = idx;
+    card.innerHTML = `
+      <div class="rank-watermark">${idx+1}</div>
+      <div class="rank">#${idx+1}</div>
+      <img class="thumb" src="${item.img}" alt="">
+      <div class="info">
+        <p class="title" contenteditable="false">${item.title}</p>
+        <p class="desc" contenteditable="false">${item.desc}</p>
+      </div>
+    `;
+    listEl.appendChild(card);
+
+    const titleEl = card.querySelector('.title');
+    const descEl = card.querySelector('.desc');
+    const imgEl = card.querySelector('.thumb');
+
+    titleEl.addEventListener('dblclick', () => {
+      if(!isEditing) return;
+      titleEl.contentEditable = 'true';
+      titleEl.focus();
+    });
+    titleEl.addEventListener('blur', () => {
+      if(!isEditing) return;
+      titleEl.contentEditable = 'false';
+      items[idx].title = titleEl.textContent.trim();
+      saveItems();
+    });
+
+    descEl.addEventListener('dblclick', () => {
+      if(!isEditing) return;
+      descEl.contentEditable = 'true';
+      descEl.focus();
+    });
+    descEl.addEventListener('blur', () => {
+      if(!isEditing) return;
+      descEl.contentEditable = 'false';
+      items[idx].desc = descEl.textContent.trim();
+      saveItems();
+    });
+
+    imgEl.addEventListener('click', (e) => {
+      if(!isEditing) return;
+      e.stopPropagation();
+      const url = prompt('Ссылка на картинку:', item.img);
+      if(url){
+        items[idx].img = url;
+        saveItems();
+        render();
+      }
+    });
+  });
+
+  if(!sortableInstance){
+    sortableInstance = new Sortable(listEl, {
+      animation: 150,
+      ghostClass: 'sortable-ghost',
+      chosenClass: 'sortable-chosen',
+      disabled: !isEditing,
+      onStart: () => { isDragging = true; },
+      onEnd: function(){
+        isDragging = false;
+        if(!isEditing) return;
+        const newOrder = [];
+        listEl.querySelectorAll('.card').forEach(card => {
+          newOrder.push(items[card.dataset.idx]);
+        });
+        items = newOrder;
+        saveItems();
+        render();
+      }
+    });
+  }
+}
+
+async function saveItems(){
+  if(!isEditing) return;
+  try{
+    await docRef.set({ items });
+  }catch(err){
+    alert('Не удалось сохранить: ' + err.message);
+  }
+}
+
+// Живая синхронизация: все посетители видят изменения сразу
+docRef.onSnapshot(snap => {
+  if(isDragging) return;
+  if(snap.exists && snap.data().items){
+    items = snap.data().items;
+  } else {
+    items = defaultData();
+  }
+  render();
+}, err => {
+  listEl.innerHTML = '<p style="color:var(--danger); text-align:center;">Не удалось подключиться к базе. Проверь firebaseConfig и правила доступа.</p>';
+  console.error(err);
+});
+
+auth.onAuthStateChanged(user => {
+  isEditing = !!user;
+  applyEditingState();
+});
+
+document.getElementById('btnLogin').addEventListener('click', async () => {
+  if(isEditing){
+    await auth.signOut();
+    return;
+  }
+  const email = prompt('Email администратора:');
+  if(!email) return;
+  const pw = prompt('Пароль:');
+  if(!pw) return;
+  try{
+    await auth.signInWithEmailAndPassword(email, pw);
+  }catch(err){
+    alert('Не удалось войти: ' + err.message);
+  }
+});
+
+document.getElementById('btnExport').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(items, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'data.json';
+  a.click();
+});
+
+document.getElementById('btnReset').addEventListener('click', () => {
+  if(!isEditing) return;
+  if(confirm('Сбросить порядок и вернуть исходный список?')){
+    items = defaultData();
+    saveItems();
+    render();
+  }
+});
+</script>
+</body>
+</html>

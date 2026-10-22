@@ -4,13 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hardest Game Achievements List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:dark;--bg:#0f1417;--card:#172026;--line:#26343c;--tx:#eef3f4;--mut:#8ea0a8;--acc:#2dd4bf;--pts:#fb923c;--chip:#12332f;--box:#111a1f;--bad:#f87171}
+@property --g1{syntax:'<color>';inherits:true;initial-value:#3a2f66}
+@property --g2{syntax:'<color>';inherits:true;initial-value:#231c45}
+@property --e1{syntax:'<color>';inherits:true;initial-value:#b9a6ff}
+@property --e2{syntax:'<color>';inherits:true;initial-value:#7a5cf0}
+@property --bga{syntax:'<color>';inherits:true;initial-value:#1c1633}
+@property --bgb{syntax:'<color>';inherits:true;initial-value:#0e0b1a}
+@property --acc{syntax:'<color>';inherits:true;initial-value:#c4b5fd}
+:root{color-scheme:dark;--bg:#0f1417;--card:#172026;--line:#26343c;--tx:#eef3f4;--mut:#8ea0a8;--pts:#fb923c;--chip:color-mix(in srgb,var(--acc) 16%,transparent);--box:rgba(0,0,0,.28);--bad:#f87171;--g1:#3a2f66;--g2:#231c45;--e1:#b9a6ff;--e2:#7a5cf0;--bga:#1c1633;--bgb:#0e0b1a;--acc:#c4b5fd;transition:--g1 .7s,--g2 .7s,--e1 .7s,--e2 .7s,--bga .7s,--bgb .7s,--acc .7s}
+html{background:#0b0b0e}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 900px 460px at 50% -10%,color-mix(in srgb,var(--acc) 20%,transparent) 0%,transparent 62%),linear-gradient(180deg,var(--bga),var(--bgb))}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{margin:0;background:none;color:var(--tx);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 .wrap{max-width:960px;margin:0 auto;padding:20px 14px 60px}
-header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:16px;padding-right:48px}
-h1{margin:0;font-size:24px;letter-spacing:-.3px}h1 span{color:var(--acc)}
+header{text-align:center;padding:36px 48px 26px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+h1{margin:0;font-family:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;font-weight:800;font-size:clamp(36px,8vw,72px);line-height:.95;letter-spacing:.02em}h1 span{color:var(--acc)}
 .lock{position:fixed;top:14px;right:14px;width:36px;height:36px;padding:0;border-radius:8px;font-size:18px;line-height:1;z-index:5}
 .lock.on{background:var(--acc);border-color:var(--acc);color:#04201c;font-weight:700}
 .bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
@@ -18,19 +30,18 @@ input{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(-
 .bar input{flex:1;min-width:180px;width:auto}
 button{font:inherit;cursor:pointer;color:var(--tx);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
 button:hover{border-color:var(--acc)}button.pri{background:var(--acc);border-color:var(--acc);color:#04201c;font-weight:600}
-.card{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:10px}
+.card{display:flex;gap:14px;align-items:center;border:2px solid transparent;background:linear-gradient(135deg,var(--g1),var(--g2)) padding-box,linear-gradient(135deg,var(--e1),var(--e2)) border-box;box-shadow:0 6px 18px rgba(0,0,0,.28);border-radius:14px;padding:9px;margin-bottom:10px}
 .card.drag{opacity:.4}.card.over{box-shadow:0 -3px 0 var(--acc)}
 .grip{cursor:grab;color:var(--mut);font-size:18px;padding:0 2px;user-select:none}
-.thumb{flex:0 0 180px;height:100px;border-radius:10px;background:linear-gradient(135deg,var(--acc),#6366f1);background-size:cover;background-position:center;display:grid;place-items:center;color:#fff;font-size:34px;font-weight:800}
+.thumb{flex:0 0 180px;height:100px;border-radius:10px;background:linear-gradient(135deg,var(--e1),var(--e2));background-size:cover;background-position:center;display:grid;place-items:center;color:#fff;font-size:34px;font-weight:800}
 .main{flex:1;min-width:0}
 .title{font-size:19px;font-weight:700;overflow-wrap:anywhere}.title .rank{color:var(--acc);margin-right:8px}
 .game{color:var(--mut);margin:2px 0 8px}
-.info{display:inline-flex;flex-wrap:wrap;gap:4px 14px;background:var(--box);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:13px;color:var(--mut)}
+.info{display:inline-flex;flex-wrap:wrap;gap:4px 14px;background:var(--box);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 10px;font-size:13px;color:var(--mut)}
 .info b{color:var(--tx);font-weight:600}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .tag{background:var(--chip);color:var(--acc);border:1px solid var(--acc);border-radius:99px;padding:1px 10px;font-size:12px;font-weight:600}
 .side{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
-.pts{text-align:right;color:var(--pts);font-weight:800;font-size:28px;line-height:1}.pts small{display:block;font-size:11px;letter-spacing:1.5px}
 .act{display:flex;gap:4px}.act button{padding:3px 8px;font-size:13px}
 .empty{text-align:center;color:var(--mut);padding:40px}
 dialog{border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--tx);width:min(520px,94vw);padding:18px}
@@ -40,13 +51,13 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
 .foot{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
 .err{color:var(--bad);font-size:13px;min-height:18px;margin-top:8px}
 input[type=file]{padding:6px}
-@media(max-width:640px){.card{flex-wrap:wrap}.thumb{flex:1 0 100%;height:140px}.grip{display:none}.side{flex-direction:row;width:100%;justify-content:space-between;align-items:center}.pts{text-align:left}}
+@media(max-width:640px){.card{flex-wrap:wrap}.thumb{flex:1 0 100%;height:140px}.grip{display:none}.side{flex-direction:row;width:100%;justify-content:space-between;align-items:center}}
 </style>
 </head>
 <body>
 <button class="lock" id="lock" title="Owner sign in">✓</button>
 <div class="wrap">
-<header><h1>Hardest Game <span>Achievements</span> List</h1></header>
+<header><div class="eyebrow">Achievement ranking</div><h1>HARDEST <span>GAME</span> ACHIEVEMENTS LIST</h1></header>
 <div class="bar">
 <input id="q" placeholder="Search by title, game, verifier, tags…">
 <button class="pri" id="add" hidden>+ Add</button>
@@ -86,8 +97,7 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore(),col=db.collection("achievements");
-const TOP=500,DECAY=0.95,TAGS=["Story","Hardcore","Skill","Grind","Multi","Co-op","PvP","Speedrun"];
-const ptsFor=i=>Math.max(1,Math.round(TOP*Math.pow(DECAY,i)));
+const TAGS=["Story","Hardcore","Skill","Grind","Multi","Co-op","PvP","Speedrun"];
 const $=id=>document.getElementById(id);
 let items=[],admin=false,editing=null,dragFrom=null,imgData=null,selTags=new Set(),loaded=false;
 
@@ -95,6 +105,28 @@ function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=nu
 function fmtDate(s){if(!s)return "";const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d).toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric"})}
 function fail(e){alert("Could not save: "+(e&&e.message?e.message:e))}
 
+const TIERS=[
+ {max:20,g1:"#3a2f66",g2:"#231c45",e1:"#b9a6ff",e2:"#7a5cf0",bga:"#1c1633",bgb:"#0e0b1a",acc:"#c4b5fd"},
+ {max:50,g1:"#4a1520",g2:"#2a0d13",e1:"#ff6b6b",e2:"#9b1c2e",bga:"#2b0f14",bgb:"#120708",acc:"#ff8a8a"},
+ {max:100,g1:"#17406b",g2:"#0f2744",e1:"#5ab4ff",e2:"#2a6fdb",bga:"#0d2036",bgb:"#070f1a",acc:"#7cc4ff"},
+ {max:200,g1:"#5a3d0d",g2:"#3a2508",e1:"#ffd166",e2:"#f08a24",bga:"#2e2008",bgb:"#150e04",acc:"#ffc766"},
+ {max:Infinity,g1:"#4a4d52",g2:"#2a2c30",e1:"#d0d3d8",e2:"#7b7f86",bga:"#1f2124",bgb:"#0e0f10",acc:"#d5d8dc"}
+];
+let curTier=-1,tierTick=false;
+function setTier(n){
+ if(n===curTier)return;curTier=n;const t=TIERS[n],r=document.documentElement.style;
+ ["g1","g2","e1","e2","bga","bgb","acc"].forEach(k=>r.setProperty("--"+k,t[k]));
+}
+function updateTier(){
+ tierTick=false;
+ const cs=document.querySelectorAll(".card");
+ if(!cs.length){setTier(0);return}
+ const cy=innerHeight/2;let best=null,bd=1e9;
+ for(const c of cs){const r=c.getBoundingClientRect(),d=cy<r.top?r.top-cy:(cy>r.bottom?cy-r.bottom:0);if(d<bd){bd=d;best=c;if(d===0)break}}
+ const rank=+best.dataset.rank;setTier(TIERS.findIndex(t=>rank<=t.max));
+}
+addEventListener("scroll",()=>{if(!tierTick){tierTick=true;requestAnimationFrame(updateTier)}},{passive:true});
+addEventListener("resize",updateTier);
 async function move(from,to){
  if(!admin||to<0||to>=items.length||from===to)return;
  items.splice(to,0,items.splice(from,1)[0]);render();
@@ -108,7 +140,7 @@ function render(){
  items.forEach((it,i)=>{
   const tags=(it.tags||[]).filter(t=>TAGS.includes(t));
   if(q&&![it.title,it.game,it.ver,...tags].join(" ").toLowerCase().includes(q))return;shown++;
-  const c=el("div","card");c.draggable=admin&&!q;
+  const c=el("div","card");c.dataset.rank=i+1;c.draggable=admin&&!q;
   const th=el("div","thumb");
   if(typeof it.img==="string"&&it.img.startsWith("data:image/"))th.style.backgroundImage="url("+it.img+")";else th.textContent=(it.title||"?")[0].toUpperCase();
   const m=el("div","main"),t=el("div","title");t.append(el("span","rank","#"+(i+1)),document.createTextNode(it.title||""));
@@ -117,13 +149,13 @@ function render(){
   [["Verifier",it.ver],["Verified",fmtDate(it.date)]].forEach(([k,v])=>{if(v){const s=el("span");s.append(document.createTextNode(k+": "),el("b",null,v));inf.append(s)}});
   if(inf.children.length)m.append(inf);
   if(tags.length){const tg=el("div","tags");tags.forEach(x=>tg.append(el("span","tag",x)));m.append(tg)}
-  const sd=el("div","side"),p=el("div","pts",String(ptsFor(i)));p.append(el("small",null,"POINTS"));sd.append(p);
+  const sd=el("div","side");
   if(admin){
    const a=el("div","act");
    [["▲",()=>move(i,i-1)],["▼",()=>move(i,i+1)],["✎",()=>openDlg(it)],["✕",async()=>{if(confirm("Delete “"+it.title+"”?")){try{await col.doc(it.id).delete()}catch(e){fail(e)}}}]].forEach(([l,f])=>{const b=el("button",null,l);b.onclick=f;a.append(b)});
    sd.append(a);c.append(el("div","grip","⋮⋮"));
   }
-  c.append(th,m,sd);
+  c.append(th,m);if(admin)c.append(sd);
   if(admin){
    c.ondragstart=e=>{dragFrom=i;c.classList.add("drag");e.dataTransfer.effectAllowed="move"};
    c.ondragend=()=>{c.classList.remove("drag");document.querySelectorAll(".over").forEach(x=>x.classList.remove("over"))};
@@ -134,6 +166,7 @@ function render(){
   L.append(c);
  });
  if(!shown)L.append(el("div","empty",items.length?"Nothing found":(admin?"The list is empty. Add the first achievement.":"No achievements yet.")));
+ updateTier();
 }
 
 col.orderBy("order").onSnapshot(snap=>{
